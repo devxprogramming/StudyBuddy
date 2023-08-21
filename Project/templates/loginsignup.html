@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+
+
+{% block content %}
+    {% include 'navbar.html' %}
+    {% include 'messages.html' %}
+    {% if page == 'login' %}
+        <div class="form-box">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title text-center">Login</h4>
+                    <div class="card-text">
+                        <form action="" method="post">
+                            {% csrf_token %}
+                            <div class="mb-3">
+                                <label for="" class="form-label">Username</label>
+                                <input type="text" name="username" id="username" class="form-control" placeholder="" aria-describedby="helpId">
+                                <small id="helpId" class="text-muted">Enter Valid Username</small>
+                            </div>
+                            <div class="mb-3">
+                                <label for="" class="form-label">Password</label>
+                                <input type="password" name="password" id="password" class="form-control" placeholder="" aria-describedby="helpId">
+                                <small id="helpId" class="text-muted">Enter Valid Password</small>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="checkBox" id="checkBox">
+                                <label class="form-check-label" for="">
+                                  Show Password
+                                </label>
+                            </div>
+                            <button name="" id="" class="btn btn-success w-100 mt-2" type='submit'>Login</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% else %}
+    <div class="form-box">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title text-center">Sign Up</h4>
+                <div class="card-text">
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        {{form.as_p}}
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="checkBox" id="checkBox">
+                            <label class="form-check-label" for="">
+                              Show Password
+                            </label>
+                        </div>
+                        <button name="" id="" class="btn btn-success w-100 mt-2" type='submit'>Sign Up</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div> 
+    
+    {% endif %}
+
+
+
+
+
+{% endblock  %}

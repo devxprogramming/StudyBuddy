@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}{% endblock title %}
+
+
+{% block content %}
+
+    {% include 'navbar.html' %}
+
+    {% if request.user.is_authenticated %}
+        <div class="container-fluid mt-2">
+            <div class="home-container">
+            
+                <div class="browse-topics">
+                    {% include 'offcanvas.html' %}
+                </div>
+                
+    
+                <div class="rooms">
+                    {% for room in rooms %}
+                        <div class="card m-2">
+                            <div class="card-body">
+                                <a href="{% url 'room' room.id %}" class="card-title"><b>Room Name: </b>{{room.name}}</a>
+                                <p class="card-text"><b>Host: </b>@{{room.host}}</p>
+                                <p class="card-text"><b>Description: </b>{{room.description|truncatechars:20}}</p>
+                                <a href="{% url 'update-room' room.id %}" class="btn btn-warning">Update</a>
+                                <a href="{% url 'delete-room' room.id %}" class="btn btn-danger">Delete</a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+    
+                
+            </div>
+        </div>
+
+    {% else %}
+        <h1 class="text-center fw-bold">Login to see what is on this Page</h1>
+
+    {% endif %}
+
+
+{% endblock content %}

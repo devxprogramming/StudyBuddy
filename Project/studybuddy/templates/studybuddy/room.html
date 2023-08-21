@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %}{% endblock  %}
+
+
+{% block content %}
+{% include 'navbar.html' %}
+
+
+<div class="container-fluid">
+
+    <div class="home-container">
+
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">{{room.name}}</h4>
+                <p class="card-text">{{room.description|truncatewords:5}}</p>
+                <p class="card-text">Date Updated: <b>{{room.updated|timesince}}</b></p>
+                <p class="card-text">Date Created: <b>{{room.created|timesince}}</b></p>
+            </div>
+        </div>
+        <div class="card ms-2">
+            <div class="card-body">
+                <h4 class="card-title">Title</h4>
+                <p class="card-text">
+                    <label class="form-label" for="name">Name</label>
+                    <input class="form-control" type="text" value="{{room.name}}" disabled name="name" id="name">
+                </p>
+                <p class="card-text">
+                    <label class="form-label" for="description">Description</label>
+                    <input class="form-control" type="text" value="{{room.description}}" disabled name="description" id="description">
+                </p>
+                <p class="card-text">
+                    <label class="form-label" for="participants">Participants</label>
+                    <input class="form-control" type="password" value="{{room.description}}" disabled name="participants" id="participants">
+                </p>
+            
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock  %}

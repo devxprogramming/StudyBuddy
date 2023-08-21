@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+
+{% block title %}{% endblock  %}
+
+
+{% block content %}
+
+{% include 'navbar.html' %}
+
+    {% if request.user.is_authenticated %}
+
+        {% if page == "createpost" %}
+        
+        <div class="d-flex">
+            <div class="alert ms-auto me-2 alert-success alert-dismissible fade show" role="alert">
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                <small>Welcome <b>{{request.user}}</b> what would you like to post on your feed today? </small>
+            </div>
+        </div>
+        
+
+        <form action="" method="post">
+            {% csrf_token %}
+            <div class="form-box">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title text-center">Create Post</h4>
+                        <p class="card-text">{{form}}</p>
+                        <button class="btn btn-success w-100">Create</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+        
+        {% else %}
+            <h1>You are Not allowed on this page</h1>
+        
+        {% endif %}
+
+    {% endif %}
+
+
+{% endblock content %}
+

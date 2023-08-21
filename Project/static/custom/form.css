@@ -1,0 +1,11 @@
+.form-box
+{
+    margin: auto;
+    width: 50%;
+}
+
+.home-container
+{
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+}

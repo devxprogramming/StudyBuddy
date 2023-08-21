@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}{% endblock  %}
+
+{% block content %}
+{% include 'navbar.html' %}
+
+<div class="form-box">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title text-center d-flex fw-bold ">Create Room
+                <a href="{{request.META.HTTP_REFERER}}" class="btn btn-danger w-25 ms-auto">Back</a>
+            </h4>
+            
+            <div class="card-text">
+                <form action="" method="post">
+                    {% csrf_token %}
+                    {{form}}
+                    <button class="btn btn-success w-100 mt-2" type="submit">Create Room</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock  %}

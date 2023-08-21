@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}Delete{% endblock  %}
+
+{% block content %}
+{% include 'navbar.html' %}
+
+<div class="form-box">
+    <form action="" method="post">
+        {% csrf_token %}
+        <p>Are you sure you want to Delete "{{obj}}"</p>
+        <input type="submit" class="btn btn-success w-25" name="submit" id="submit" value="Yes">
+        <a href="{{request.META.HTTP_REFERER}}" class="btn btn-danger w-25 ms-auto">Back</a>
+    </form>
+</div>
+
+
+{% endblock  %}

@@ -1,0 +1,59 @@
+<nav class="navbar navbar-expand-sm navbar-light bg-light">
+      <div class="container">
+        {% if page == 'home' %}
+        <button class="btn btn-outline-success me-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#Id2" aria-controls="Id2" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span> Menu
+         </button>
+        {% endif %}
+        <a class="navbar-brand" href="{% url 'home' %}">Study Buddy</a>
+        <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse" id="collapsibleNavId">
+            {% if request.user.is_authenticated %}
+                <ul class="navbar-nav me-auto mt-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-outline-danger" href="{% url 'home' %}" aria-current="page">Home <span class="visually-hidden">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                            <a class="nav-link btn btn-outline-info" href="{% url 'create-room' %}">Create Post</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownId">
+                            <a class="dropdown-item" href="#">Action 1</a>
+                            <a class="dropdown-item" href="#">Action 2</a>
+                        </div>
+                    </li>
+                    {% if page == 'home' %}
+                        {% if room_count > 1 %}
+                            <li class="nav-item">
+                                <button class="btn btn-outline-danger"><b>{{room_count}}</b> rooms Available</button>
+                            </li>
+                        {% else %}
+                            <li class="nav-item">
+                                <button class="btn btn-outline-danger"><b>{{room_count}}</b> room Available</button>
+                            </li>
+                        {% endif %}
+                    {% endif %}
+                </ul>
+            {% endif %}
+            {% if request.user.is_authenticated %}
+                {% if page == "home" %}
+                    <form class="d-flex my-2 my-lg-0" method="get">
+                        <input class="form-control me-sm-2" name="q" type="text" placeholder="Search">
+                        <button class="btn btn-outline-success my-2 my-sm-0"  type="submit">Search</button>
+                    </form>
+                {% endif %}
+                <a href="{% url 'logoutuser' %}" class="btn btn-danger mx-2">Logout</a>
+            {% else %}
+                <div class="ms-auto">
+                    <a href="{% url 'loginuser' %}" class="btn btn-success">Login</a>
+                    <a href="{% url 'signupuser' %}" class="btn btn-success mx-2">Sign Up</a>
+                </div>
+            {% endif %}
+        </div>
+  </div>
+</nav>
